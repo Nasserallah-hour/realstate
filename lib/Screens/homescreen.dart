@@ -46,12 +46,7 @@ double screenheight = MediaQuery.of(context).size.height;
                         ],),
                     const Spacer(),
                     //Notification bell
-                    Container(
-                      color: customcolor2,
-                      height: size,
-                      width: size,
-                      child:  Icon(Icons.notifications,color:  customcolor1,),
-                    )
+                    myiconbutton(size: size,icon: Icons.notifications,color: customcolor1,)
                       ],),
               )
            ,
@@ -172,6 +167,27 @@ double screenheight = MediaQuery.of(context).size.height;
   }
 }
 
+class myiconbutton extends StatelessWidget {
+  final Color color;
+  final IconData icon;
+  const myiconbutton({
+    Key? key,
+    required this.size, required this.color, required this.icon,
+  }) : super(key: key);
+
+  final double size;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: customcolor2,
+      height: size,
+      width: size,
+      child:  Icon(icon,color:  color,),
+    );
+  }
+}
+
 class statecard extends StatelessWidget {
   const statecard({
     Key? key,
@@ -182,52 +198,56 @@ class statecard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: screenwidth*0.8,
-      width: screenwidth*0.8,
-      decoration: BoxDecoration(color: customcolor2),
-      child:
-      Column(children: [
-        //TCARD IMAGE
-       Expanded(flex: 3, child: Container(
-  foregroundDecoration: const BoxDecoration(
-    image: DecorationImage(
-        image: NetworkImage(
-            'https://images.unsplash.com/photo-1656078249853-934494b07801?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8cm5TS0RId3dZVWt8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
-        fit: BoxFit.cover),
-  ),)),
-      //tHE CARD INFORMATION
-       Expanded(flex: 1,child: 
-      Column(
-        children: [
-         Padding(
-           padding: const EdgeInsets.all(5.0),
-           child: Row(
-             children: [
-               Text("Corner dream house",style: TextStyle(color: customcolor4,fontSize: 20,fontWeight: FontWeight.bold),),
-               Spacer(),
-               Text("⭐",style: TextStyle(fontSize: 20),),
-               Text("5.00",style: TextStyle(color: customcolor4,fontSize: 20),)
-             ],
+    return InkWell(
+      splashColor:Colors.grey,
+      onTap: (){},
+      child: Container(
+        height: screenwidth*0.8,
+        width: screenwidth*0.8,
+        decoration: BoxDecoration(color: customcolor2),
+        child:
+        Column(children: [
+          //TCARD IMAGE
+         Expanded(flex: 3, child: Container(
+      foregroundDecoration: const BoxDecoration(
+      image: DecorationImage(
+          image: NetworkImage(
+              'https://images.unsplash.com/photo-1656078249853-934494b07801?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDd8cm5TS0RId3dZVWt8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60'),
+          fit: BoxFit.cover),
+      ),)),
+        //tHE CARD INFORMATION
+         Expanded(flex: 1,child: 
+        Column(
+          children: [
+           Padding(
+             padding: const EdgeInsets.all(5.0),
+             child: Row(
+               children: [
+                 Text("Corner dream house",style: TextStyle(color: customcolor4,fontSize: 20,fontWeight: FontWeight.bold),),
+                 Spacer(),
+                 Text("⭐",style: TextStyle(fontSize: 20),),
+                 Text("5.00",style: TextStyle(color: customcolor4,fontSize: 20),)
+               ],
+             ),
            ),
-         ),
-         Padding(
-           padding: const EdgeInsets.all(5.0),
-           child: Row(
-             children: [
-               Icon(Icons.pin_drop,color: customcolor1,),
-               Text("Melbourne, Australia",style: TextStyle(color: customcolor4,fontSize: 14,fontWeight: FontWeight.w500),),
-               Spacer(),
-               Icon(Icons.paid,color: customcolor1,),
-               Text("450/m",style: TextStyle(color: customcolor4,fontSize: 14,fontWeight: FontWeight.w500),)
-             ],
-           ),
-         )
-        ],
-      ))
-      ],)  
-    
-      ,
+           Padding(
+             padding: const EdgeInsets.all(5.0),
+             child: Row(
+               children: [
+                 Icon(Icons.pin_drop,color: customcolor1,),
+                 Text("Melbourne, Australia",style: TextStyle(color: customcolor4,fontSize: 14,fontWeight: FontWeight.w500),),
+                 Spacer(),
+                 Icon(Icons.paid,color: customcolor1,),
+                 Text("450/m",style: TextStyle(color: customcolor4,fontSize: 14,fontWeight: FontWeight.w500),)
+               ],
+             ),
+           )
+          ],
+        ))
+        ],)  
+      
+        ,
+      ),
     );
   }
 }
